@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+    protected int DAMAGE;
+    protected float SLOW_PERCENT;
 	void Start () {
-		
-	}
+        DAMAGE = 100;
+        SLOW_PERCENT = 50f;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,8 +24,9 @@ public class Obstacle : MonoBehaviour {
         {
             var hit = other.gameObject;
             var health = other.gameObject.GetComponent<Player>();
-            health.TakeDamage(100);
-            other.gameObject.GetComponent<Player>().slowDown(50f);
+            health.TakeDamage(DAMAGE);
+            other.gameObject.GetComponent<Player>().slowDown(SLOW_PERCENT);
+            
 
         }
     }
